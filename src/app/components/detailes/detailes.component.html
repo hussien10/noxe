@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-5">
         <div class="text-center">
-          <img [src]="  imagePaseUrl + (movieDetailes?.poster_path || movieDetailes?.profile_path)" [alt]="movieDetailes?.original_title || movieDetailes?.name" class="img-fluid detail-img">
+          <img [src]="  imagePaseUrl + (movieDetailes?.poster_path || movieDetailes?.profile_path)" (error)="imgError($event)" [alt]="movieDetailes?.original_title || movieDetailes?.name" class="img-fluid detail-img">
         </div>
       </div>
       <div class="col-md-7">
@@ -52,18 +52,21 @@
           </p>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8" *ngIf="cat!='person'">
         <div class="reviews">
           <app-reviewes [title]='[cat,id]'></app-reviewes>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" *ngIf="cat!='person'">
           <div class="cast">
             <app-cast [title]='[cat,id]'></app-cast>
           </div>
       </div>
       <div class="col-md-12" *ngIf="cat=='person'">
-        <app-credits [id]="id"></app-credits>
+        <app-credits [id]="id" [name]="movieDetailes?.name"></app-credits>
+      </div>
+      <div class="col-md-12" *ngIf="cat!='person'">
+        <app-simillar [id]="id" [cat]="cat" [name]="movieDetailes?.name"></app-simillar>
       </div>
     </div>
   </div>

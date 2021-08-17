@@ -13,7 +13,9 @@ export class CastComponent implements OnInit {
   casts!:any
   imagePaseUrl:string=`https://image.tmdb.org/t/p/w500`
   constructor(private _MoviesServices:MoviesService) { }
-
+  imgError(e:any){
+    this._MoviesServices.imgError(e)
+  }
   ngOnInit(): void {
     this._MoviesServices.getCast(this.title[0],this.title[1]).subscribe(response=>{
       this.casts=response

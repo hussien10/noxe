@@ -14,7 +14,7 @@
         <ng-template swiperSlide *ngFor="let credit of movieCredits?.cast">
           <a [routerLink]='["/detailes","movie",credit.id]'>
             <div class="item-card position-relative my-2 " >
-              <img [src]="(imagePaseUrl+credit.poster_path)||noPoster" [alt]="credit.name" class="img-fluid">
+              <img [src]="imagePaseUrl+credit.poster_path" (error)="imgError($event)" [alt]="credit.name" class="img-fluid">
               <div class="position-absolute w-100 item-card-info">
                 <p>{{credit.original_title}}</p>
                 <p class="text-light release-date">charcter name:{{credit.charcter||"unknown"}}</p>

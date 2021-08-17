@@ -21,6 +21,11 @@ import { ReviewesComponent } from './components/reviewes/reviewes.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { CastComponent } from './components/cast/cast.component';
 import { CreditsComponent } from './components/credits/credits.component';
+import { SimillarComponent } from './components/simillar/simillar.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +42,8 @@ import { CreditsComponent } from './components/credits/credits.component';
     NetworkComponent,
     ReviewesComponent,
     CastComponent,
-    CreditsComponent
+    CreditsComponent,
+    SimillarComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { CreditsComponent } from './components/credits/credits.component';
     HttpClientModule,
     NzRateModule,
     FormsModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,15 +19,14 @@ export class DetailesComponent implements OnInit,OnDestroy {
   constructor(private _moviesService:MoviesService,private _ActivatedRoute:ActivatedRoute,private _router:Router) {
     this._router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
-
+  imgError(e:any){
+    this._moviesService.imgError(e)
+  }
   ngOnInit(): void {
     this.movieSub=this._moviesService.getDetailes(this.cat,this.id).subscribe(response=>{
       this.movieDetailes=response
       this.vote=Math.floor(this.movieDetailes.vote_average/2)
-      if(this.cat=='person'){
-        localStorage.setItem("name",this.movieDetailes.name)
-      }
-      this.name=localStorage.getItem("name")
+
     })
   }
   ngOnDestroy(): void {

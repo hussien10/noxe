@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="home"><img src="assets/images/logo-dark.webp"/></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" routerLink="home"><img src="assets/images/logo-dark.webp" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,8 +27,16 @@
         </li>
 
       </ul>
-      <form class="d-flex ms-auto">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex ms-auto position-relative">
+        <input #searchinput class="form-control" (keyup)="search($event)" type="search" placeholder="Search" aria-label="Search">
+        <ul class="unstyled-list searchList position-absolute top-100 start-0" *ngIf="searchinput.value.length>0">
+          <li *ngFor="let result of searchResult" class="d-flex justify-content-start align-items-center bg-dark searchRes my-1">
+            <a [routerLink]='["/detailes",result.media_type,result.id]'>
+              <img [src]="result.media_type!='person'?imagePaseUrl+result.poster_path:imagePaseUrl+result.profile_path" (error)="imgError($event)" [attr.alt]="result.original_title" class="poster"/>
+            <h4 class="ms-3">{{result.media_type!='person'?result.original_title:result.name }}</h4>
+            </a>
+          </li>
+        </ul>
       </form>
       <div class="d-flex justify-content-center px-3 align-items-center text-white">
         <a href="#" class="px-2"><i class="fab fa-facebook"></i></a>

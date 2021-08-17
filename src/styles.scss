@@ -55,3 +55,6 @@ body{
     font-size: 12px;
   }
 }
+.custom-check span:not(.ant-checkbox){
+  color: #000!important;
+}

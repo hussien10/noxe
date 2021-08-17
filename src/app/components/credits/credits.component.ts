@@ -13,15 +13,17 @@ SwiperCore.use([Autoplay]);
 })
 export class CreditsComponent implements OnInit ,OnDestroy {
   @Input ()id!:number
+  @Input ()name!:string
   movieCredits!:any
   tvCredits!:any
   moviesub!:Subscription
   tvsub!:Subscription
   imagePaseUrl:string=`https://image.tmdb.org/t/p/w500`
-  name=localStorage.getItem("name")
   noPoster='../../../assets/images/no-poster-available.jpg'
   constructor(private _MovieService:MoviesService) { }
-
+  imgError(e:any){
+    this._MovieService.imgError(e)
+  }
   ngOnInit(): void {
    this.moviesub= this._MovieService.getMovieCredit(this.id).subscribe(response=>{
       this.movieCredits=response

@@ -22,11 +22,17 @@
         spaceBetween: 30
       }
     }" class="mySwiper">
-      <ng-template swiperSlide *ngFor="let movie of trendyMovies">
-        <a [routerLink]='["/detailes","movie",movie.id]'>
-          <img [src]="imagePaseUrl+movie.poster_path" [alt]="movie.title">
-        </a>
+      <ng-template swiperSlide *ngFor="let movie of trendyMovies" >
+        <div class="position-relative">
+          <a [routerLink]='["/detailes","movie",movie.id]'>
+            <img [src]="imagePaseUrl+movie.poster_path" (error)="imgError($event)" [alt]="movie.title">
+          </a>
+          <button class="star position-absolute top-0 end-0 text-black btn" (click)="addToFav(movie.title,imagePaseUrl+movie.poster_path,movie.id,$event)">
+            <i class="far fa-star"></i>
+          </button>
+        </div>
       </ng-template>
+
     </swiper>
   </div>
 </header>
@@ -45,7 +51,7 @@
         <div *ngFor="let movie of trendyMovies" class="col-lg-2 col-md-3">
           <a [routerLink]='["/detailes","movie",movie.id]'>
             <div class="item-card position-relative my-2 ">
-              <img [src]="imagePaseUrl+movie.poster_path" [alt]="movie.title" class="img-fluid">
+              <img [src]="imagePaseUrl+movie.poster_path" (error)="imgError($event)" [alt]="movie.title" class="img-fluid">
               <div class="position-absolute w-100 item-card-info">
                 <p>{{movie.title}}</p>
                 <span class="text-light release-date">release date:{{movie.release_date}}</span>
@@ -69,7 +75,7 @@
         <div *ngFor="let tv of trendyTv" class="col-lg-2 col-md-3">
           <a [routerLink]='["/detailes","tv",tv.id]'>
             <div class="item-card position-relative my-2 ">
-              <img [src]="imagePaseUrl+tv.poster_path" [alt]="tv.name" class="img-fluid">
+              <img [src]="imagePaseUrl+tv.poster_path" (error)="imgError($event)" [alt]="tv.name" class="img-fluid">
               <div class="position-absolute w-100 item-card-info">
                 <p>{{tv.name}}</p>
                 <span class="text-light release-date">release date:{{tv.first_air_date}}</span>
@@ -93,7 +99,7 @@
         <div *ngFor="let person of trendyActors" class="col-lg-2 col-md-3">
           <a [routerLink]='["/detailes","person",person.id]'>
             <div class="item-card position-relative my-2 ">
-              <img [src]="imagePaseUrl+person.profile_path" [alt]="person.name" class="img-fluid">
+              <img [src]="imagePaseUrl+person.profile_path" (error)="imgError($event)" [alt]="person.name" class="img-fluid">
               <div class="position-absolute w-100 item-card-info">
                 <p>{{person.name}}</p>
                 <span class="text-light release-date">department:{{person.known_for_department}}</span>
