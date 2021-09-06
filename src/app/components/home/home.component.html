@@ -27,7 +27,7 @@
           <a [routerLink]='["/detailes","movie",movie.id]'>
             <img [src]="imagePaseUrl+movie.poster_path" (error)="imgError($event)" [alt]="movie.title">
           </a>
-          <button class="star position-absolute top-0 end-0 text-black btn" (click)="addToFav(movie.title,imagePaseUrl+movie.poster_path,movie.id,$event)">
+          <button class="star position-absolute top-0 end-0 text-black btn" (click)="addToFav({'movieName':movie.title,'imgUrl':imagePaseUrl+movie.poster_path,'movieID':movie.id})">
             <i class="far fa-star"></i>
           </button>
         </div>

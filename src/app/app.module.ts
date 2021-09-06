@@ -23,6 +23,7 @@ import { CastComponent } from './components/cast/cast.component';
 import { CreditsComponent } from './components/credits/credits.component';
 import { SimillarComponent } from './components/simillar/simillar.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 
@@ -43,7 +44,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     ReviewesComponent,
     CastComponent,
     CreditsComponent,
-    SimillarComponent
+    SimillarComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

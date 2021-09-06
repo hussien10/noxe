@@ -40,15 +40,15 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this._WishlistService.showTheWishList(this.token).subscribe(
-      response=>{
-        // this.favoritesItems=response;
-        console.log(new Set(this.favoritesItems))
-      },
-      err=>{
-        console.log(err)
-      }
-    )
+    // this._WishlistService.showTheWishList(this.token).subscribe(
+    //   response=>{
+    //     // this.favoritesItems=response;
+    //     console.log(new Set(this.favoritesItems))
+    //   },
+    //   err=>{
+    //     console.log(err)
+    //   }
+    // )
   }
 
 }

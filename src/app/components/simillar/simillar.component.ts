@@ -24,7 +24,6 @@ export class SimillarComponent implements OnInit {
   ngOnInit(): void {
     this.simSub=this._MoviesService.getSimillar(this.id,this.cat).subscribe((res:any)=>{
       this.simillar=res.results
-      console.log(this.simillar)
     })
   }
 

@@ -37,27 +37,8 @@ export class HomeComponent implements OnInit {
   imgError(e:any){
     this._moviesService.imgError(e)
   }
-  addToFav(name:string,img:string,id:string,e:any){
-    if(e.target.style.color!='red'){
-      this._render.setStyle(e.target,'color','red')
-
-    }
-    else{
-      this._render.setStyle(e.target,'color','black')
-    }
-
-    this.data={
-      movieName:name,
-      imgUrl:img,
-      userID:this.userToken._id,
-      movieID:id,
-      token:this.token
-    }
-    this.wishSub=this._wishlistService.addToWishList(this.data).subscribe(res=>{
-    },
-    error=>{
-      console.log(error)
-    })
+  addToFav(item:Wishlist){
+    this._wishlistService.setData(item)
 
   }
 
